@@ -36,7 +36,12 @@ class Kam extends Kwail{
 public class Abstract {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		Kwail s1 = new Sakwa();
+		s1.meokja();
+		Kwail b1 = new Bae();
+		b1.meokja();
+		Kwail k1 = new Kam();
+		k1.meokja();
 
 	}
 
