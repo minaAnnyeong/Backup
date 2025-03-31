@@ -1,4 +1,4 @@
-package a132_contruct;
+package a132_contructor;
 
 class Car {
 	private String color;
@@ -60,7 +60,7 @@ class Bread {
 
 }
 
-public class Construct {
+public class Constructor {
 
 	public static void main(String[] args) {
 		/*
