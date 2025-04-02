@@ -21,7 +21,8 @@ class ThreadClass2 extends Thread {
 class RunnableClass implements Runnable {
 	public void run() {
 		for (int i = 0; i < 10; i++) {
-			System.out.println(getName() + "네가 쏜다고?");
+			// thread상속않고 Runnable인페만 상속받았으니 getName같은 메서드 사용을 위해선 Thread...를 앞에 붙여줘야함
+			System.out.println(Thread.currentThread().getName() + "네가 쏜다고?");
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
