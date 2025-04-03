@@ -10,22 +10,27 @@ import java.io.PrintWriter;
 public class FileStream {
 
 	public static void main(String[] args) throws IOException {
-		FileReader fr = new FileReader("D:/aa.txt");
-		BufferedReader br = new BufferedReader(fr);
-
-		FileWriter fw = new FileWriter("D:/ff.txt");
-		BufferedWriter bw = new BufferedWriter(fw);
-		PrintWriter pw = new PrintWriter(bw);
+		/*
+		 * FileReader fr = new FileReader("D:/aa.txt"); BufferedReader br = new
+		 * BufferedReader(fr);
+		 * 
+		 * FileWriter fw = new FileWriter("D:/ff.txt"); BufferedWriter bw = new
+		 * BufferedWriter(fw); PrintWriter pw = new PrintWriter(bw);
+		 */
+		
+		BufferedReader br =new BufferedReader(new FileReader("D:/aa.txt"));
+		PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("D:/ff.txt")));
+		
 		
 		String s = "";
 		while((s = br.readLine()) != null) {
 			pw.println(s); // 콘솔 화면이 아닌 파일 내에 줄바꿈 추가
 		}
 		br.close();
-		fr.close();
+//		fr.close();
 		pw.close();
-		bw.close();
-		fw.close();
+//		bw.close();
+//		fw.close();
 	}
 
 }
