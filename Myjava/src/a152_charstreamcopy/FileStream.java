@@ -17,17 +17,19 @@ public class FileStream {
 		 * FileWriter fw = new FileWriter("D:/ff.txt"); BufferedWriter bw = new
 		 * BufferedWriter(fw); PrintWriter pw = new PrintWriter(bw);
 		 */
-		
-		BufferedReader br =new BufferedReader(new FileReader("D:/aa.txt"));
-		PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("D:/ff.txt")));
-		
-		
+
+		// 줄여쓰기 가능. 속에있는 객체는 .close()하지 않아도 된다.
+		BufferedReader br = new BufferedReader(new FileReader("D:/aa.txt"));
+		PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("D:/ff.txt", true)));
+
 		String s = "";
-		while((s = br.readLine()) != null) {
+		while ((s = br.readLine()) != null) {
+			System.out.println("나 복사중임...");
 			pw.println(s); // 콘솔 화면이 아닌 파일 내에 줄바꿈 추가
 		}
 		br.close();
 //		fr.close();
+		
 		pw.close();
 //		bw.close();
 //		fw.close();
