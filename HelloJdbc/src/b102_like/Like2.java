@@ -38,7 +38,7 @@ public class Like2 {
 		}
 		
 		con1.close();
-		
+		sc1.close();
 	}
 
 }
