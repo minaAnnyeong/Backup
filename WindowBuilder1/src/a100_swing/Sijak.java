@@ -49,7 +49,7 @@ public class Sijak extends JFrame {
 	public Sijak() {
 		setBackground(Color.WHITE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 498, 321);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(255, 128, 64));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -66,21 +66,21 @@ public class Sijak extends JFrame {
 			}
 		});
 		btnClick.setFont(new Font("굴림", Font.BOLD, 20));
-		btnClick.setBounds(165, 111, 121, 48);
+		btnClick.setBounds(201, 121, 121, 48);
 		contentPane.add(btnClick);
 
 //		JLabel lblNewLabel = new JLabel("버튼 누르면 글씨가 나온다"); // *전역객체로 변경
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("굴림", Font.BOLD, 12));
 		lblNewLabel.setBackground(new Color(255, 255, 128));
-		lblNewLabel.setBounds(192, 0, 221, 36);
+		lblNewLabel.setBounds(228, 10, 221, 36);
 		contentPane.add(lblNewLabel);
 
 		textField = new JTextField();
 		textField.setHorizontalAlignment(SwingConstants.CENTER);
 		textField.setText("\r\n");
 		textField.setFont(new Font("굴림", Font.BOLD, 12));
-		textField.setBounds(218, 46, 173, 40);
+		textField.setBounds(254, 56, 173, 40);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
@@ -92,7 +92,7 @@ public class Sijak extends JFrame {
 			}
 		});
 		btnClick_1.setFont(new Font("굴림", Font.BOLD, 18));
-		btnClick_1.setBounds(313, 111, 121, 48);
+		btnClick_1.setBounds(349, 121, 121, 48);
 		contentPane.add(btnClick_1);
 		
 		btnNewButton = new JButton("ice cream");
@@ -101,12 +101,12 @@ public class Sijak extends JFrame {
 			}
 		});
 		btnNewButton.setIcon(new ImageIcon("D:\\ice-cream-22.jpg"));
-		btnNewButton.setBounds(0, 0, 81, 59);
+		btnNewButton.setBounds(53, 10, 114, 93);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("New button");
 		btnNewButton_1.setIcon(new ImageIcon(Sijak.class.getResource("/img/ice-cream-22.jpg")));
-		btnNewButton_1.setBounds(35, 108, 118, 93);
+		btnNewButton_1.setBounds(49, 159, 118, 93);
 		contentPane.add(btnNewButton_1);
 	}
 }
