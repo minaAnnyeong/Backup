@@ -35,6 +35,7 @@ public class Insert2 {
 		System.out.println("처리 행수: " + rowcnt2); // 0 나오면 insert실패
 		
 		con1.close();
+		System.out.println("접속 끝");
 	}
 
 }

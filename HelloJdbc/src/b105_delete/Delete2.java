@@ -1,4 +1,4 @@
-package b104_update;
+package b105_delete;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,9 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
-
-public class Update2 {
+public class Delete2 {
 
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Connection con1 = null;
@@ -16,25 +14,23 @@ public class Update2 {
 		con1 = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "hr", "1234");
 		System.out.println("접속 확인됨");
 		
-//		Q) 키보드로 사원명과 변경될 전화번호를 입력받아 DB를 update하시오. (단, 동명이인이 없다고 가정)
+//		Q) 키보드로 퇴사한 사원아이디(id)를 입력받아 DB에서 삭제하시오. (단, 동명이인없다고 가정한다.)
 		
-		String sql2 = "update teltable set tel = ? where name = ?";
+		String sql2 = "delete from teltable where id = ?";
 		
 		PreparedStatement pst1 = con1.prepareStatement(sql2);
 		
 		Scanner sc1 = new Scanner(System.in);
-		System.out.println("수정하기 위해 검색할 이름은? ");
+		System.out.println("퇴사한 사원 아이디? ");
+		int id2 = sc1.nextInt();
 		
-		String name = JOptionPane.showInputDialog("이름은?");
-		String tel = JOptionPane.showInputDialog("변경할 전화번호는?");
-		
-		pst1.setString(1, tel);
-		pst1.setString(2, name);
+		pst1.setInt(1, id2);
 		
 		int rowcnt2 = pst1.executeUpdate();
 		System.out.println("처리 행수: " + rowcnt2);
-		
 		con1.close();
+		sc1.close();
+		System.out.println("접속 끝");
 	}
 
 }

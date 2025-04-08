@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-import javax.swing.JOptionPane;
+//import javax.swing.JOptionPane;
 
 public class Update2 {
 
@@ -48,6 +48,7 @@ public class Update2 {
 		
 		con1.close();
 		sc1.close();
+		System.out.println("접속 끝");
 	}
 
 }
