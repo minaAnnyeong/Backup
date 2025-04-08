@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
@@ -21,6 +22,20 @@ public class Update2 {
 		
 		PreparedStatement pst1 = con1.prepareStatement(sql2);
 		
+		Scanner sc1 = new Scanner(System.in);
+		System.out.println("수정하기위해 검색할 이름은? ");
+		String name2 = sc1.nextLine();
+		
+		System.out.println("수정 후 전화번호는? ");
+		String tel2 = sc1.nextLine();
+		
+		// ? 위치한 순서대로 작성
+		pst1.setString(1, tel2);
+		pst1.setString(2, name2);
+		
+		pst1.executeUpdate();
+		
+		/*
 		String name = JOptionPane.showInputDialog("이름은?");
 		String tel = JOptionPane.showInputDialog("변경할 전화번호는?");
 		
@@ -29,8 +44,10 @@ public class Update2 {
 		
 		int rowcnt2 = pst1.executeUpdate();
 		System.out.println("처리 행수: " + rowcnt2);
+		*/
 		
 		con1.close();
+		sc1.close();
 	}
 
 }

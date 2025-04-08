@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
@@ -20,6 +21,9 @@ public class Update2 {
 		String sql2 = "update teltable set tel = ? where name = ?";
 		
 		PreparedStatement pst1 = con1.prepareStatement(sql2);
+		
+		Scanner sc1 = new Scanner(System.in);
+		System.out.println("수정하기 위해 검색할 이름은? ");
 		
 		String name = JOptionPane.showInputDialog("이름은?");
 		String tel = JOptionPane.showInputDialog("변경할 전화번호는?");
