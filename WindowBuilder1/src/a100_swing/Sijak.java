@@ -101,12 +101,12 @@ public class Sijak extends JFrame {
 			}
 		});
 		btnNewButton.setIcon(new ImageIcon("D:\\ice-cream-22.jpg"));
-		btnNewButton.setBounds(53, 10, 114, 93);
+		btnNewButton.setBounds(12, 10, 121, 111);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("New button");
 		btnNewButton_1.setIcon(new ImageIcon(Sijak.class.getResource("/img/ice-cream-22.jpg")));
-		btnNewButton_1.setBounds(49, 159, 118, 93);
+		btnNewButton_1.setBounds(12, 179, 118, 93);
 		contentPane.add(btnNewButton_1);
 	}
 }
