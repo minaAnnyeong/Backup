@@ -12,12 +12,12 @@ public class TelInfoVO {
 	
 	public TelInfoVO(int id, String name, String tel, Date d){
 		super();
-		this.id = id;
-		this.name = name;
-		this.tel = tel;
-		this.d = d;
+		this.setId(id);
+		this.setName(name);
+		this.setTel(tel);
+		this.setD(d);
 	}
-
+	
 	public int getId() {
 		return id;
 	}
