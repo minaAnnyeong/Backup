@@ -28,7 +28,7 @@ public class TelInfoMain {
 			sel = Integer.parseInt(JOptionPane.showInputDialog("메뉴선택"));
 
 			switch (sel) {
-			case 1:
+			case 1: // 한명 입력 Insert
 				int id = Integer.parseInt(JOptionPane.showInputDialog("아이디는?"));
 				String name = JOptionPane.showInputDialog("이름은?");
 				String tel = JOptionPane.showInputDialog("전화번호는?");
@@ -45,7 +45,16 @@ public class TelInfoMain {
 				break;
 			case 2:
 				break;
-			case 3:
+			case 3: // 삭제 D
+				int id2 = Integer.parseInt(JOptionPane.showInputDialog("삭제할 행의 아이디는?"));
+				boolean b2 = tidao.delete_nametel(id2);
+				
+				if(b2) {
+					System.out.println("delete OK");
+				}
+				else {
+					System.out.println("delete error");
+				}
 				break;
 			case 4: // 전체출력 Read
 				ArrayList<TelInfoVO> tiArray = tidao.getAllInfo(); // 메소드 호출

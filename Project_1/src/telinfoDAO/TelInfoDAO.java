@@ -45,6 +45,19 @@ public class TelInfoDAO {
 		return false;
 	}
 
+	public boolean delete_nametel(int id) {
+		String sql = "DELETE FROM teltable5 WHERE id = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Delete Error");
+			return false;
+		}
+		return false;
+	}
+
 	// getter 개념
 	public ArrayList<TelInfoVO> getAllInfo() throws SQLException {
 		ArrayList<TelInfoVO> tiArray = new ArrayList<>();
