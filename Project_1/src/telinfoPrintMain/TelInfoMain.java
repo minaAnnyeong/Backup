@@ -43,9 +43,9 @@ public class TelInfoMain {
 				}
 				
 				break;
-			case 2:
+			case 2: // 수정 Update
 				break;
-			case 3: // 삭제 D
+			case 3: // 삭제 Delete
 				int id2 = Integer.parseInt(JOptionPane.showInputDialog("삭제할 행의 아이디는?"));
 				boolean b2 = tidao.delete_nametel(id2);
 				
