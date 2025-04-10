@@ -1,4 +1,4 @@
-package a103_kiosk;
+package a104_kiosk;
 
 import java.awt.EventQueue;
 
@@ -31,8 +31,7 @@ public class Kiosk extends JFrame {
 	private String msg = "";
 	private String msg2 = "";
 	private int sum = 0;
-	private int sale = 0;
-	private boolean jongroFlag = false;
+	private int discount = 0; // 종로 선택했을 때 할일금액 
 
 	/**
 	 * Launch the application.
@@ -132,7 +131,7 @@ public class Kiosk extends JFrame {
 		btnBr5.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				msg2 = msg + "합계금액: " + String.valueOf(sum+sale) + " 원";
+				msg2 = msg + "합계금액: " + String.valueOf(sum+discount) + " 원";
 				JOptionPane.showConfirmDialog
 				(btnBr5, msg2, "확인하세요", JOptionPane.YES_NO_OPTION);
 				// clear
@@ -177,18 +176,15 @@ public class Kiosk extends JFrame {
 				// 종로거주면 1000원 할인
 				// 마우스 클릭의 중복 이벤트 방지 // 눌럿다 때고나면 2번 카운트가 되는 현상
 				if(list.getValueIsAdjusting()) {
-	//				if(e.getSource() == list) {
+				//	if(e.getSource() == list) {
 						int index1 = list.getSelectedIndex();
-	//					jongroFlag = false;
 						String indexElement1 = (String) list.getModel().getElementAt(index1);
-						if(indexElement1.equals("종로") && !jongroFlag) { // if(index1 == 0)
-							sale = -1000;
-	//						jongroFlag = true;
-							System.out.println(sum);
-						} else if(indexElement1.equals("종로 외") && jongroFlag) { // if(index1 == 1)
-							sale = 0;
-	//						jongroFlag = false;
-							System.out.println(sum);
+						if(indexElement1.equals("종로")) { // if(index1 == 0)
+							discount = -1000;
+//							System.out.println(sum);
+						} else if(indexElement1.equals("종로 외") ) { // if(index1 == 1)
+							discount = 0;
+//							System.out.println(sum);
 						}
 				//	}
 				}

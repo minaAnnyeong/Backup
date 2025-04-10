@@ -38,7 +38,7 @@ class ButtonClass extends Frame implements ActionListener {
 		this.setVisible(true);
 
 		// 창을 창닫기 버튼으로 닫기
-		// w리스너: 적용되는? 메소드 다 적어야 함 w어댑터: 필요한 메소드 몇 개만 적어도 동작하게 함
+		// w리스너: 적용되는? 메소드의 패키지 등 일일이 import해야 함 /  w어댑터: 메소드만 적어도 동작o
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e1) { 
 				dispose(); // dispose(): 종료하기 전에 메모리에 올려진 프로세스 지우기(보통 시스템(가비지컬렉터)이 하는 일을 개발자가 하는 중)
