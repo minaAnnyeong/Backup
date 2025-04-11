@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 
 import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -41,7 +42,12 @@ public class JChart2 {
 		jfchart.setBackgroundPaint(Color.yellow); 
 		jfchart.setBorderVisible(true);	// 경계선 보이게
 		jfchart.setBorderPaint(Color.PINK); // 경계선 색 지정
-		jfchart.setBorderStroke(new BasicStroke(15)); // 경계선 두께 지정
+		jfchart.setBorderStroke(new BasicStroke(15)); // 경계선 두께(px) 지정
+		
+		ChartFrame cf2 = new ChartFrame("선 그래프", jfchart);
+		cf2.pack();
+		cf2.setSize(1000, 500);
+		cf2.setVisible(true);
 		
 	}
 
