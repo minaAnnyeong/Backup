@@ -10,7 +10,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
 
-public class JChart2 {
+public class Line2 {
 
 	public static void main(String[] args) {
 		// category plot ==> bar chart
@@ -31,7 +31,7 @@ public class JChart2 {
 		JFreeChart jfchart = 
 				ChartFactory.createLineChart3D
 				("국어점수 월별 결과", "wol", "jum", dataset, po1, true, true, true);
-				//	title		기준 축   값 축 
+				//	title		기준 축   값 축 				범례(가짓수 적으면 안나올 수도 있음)
 		// ChartFactory.createLineChart3D(parameters ... )
 		// ChartFactory : 다양한 유형의 차트 생성, dataset 사용
 		// ChartUtilities 클래스 : 차트를 이미지로 변환하는 
@@ -44,9 +44,9 @@ public class JChart2 {
 		jfchart.setBorderPaint(Color.PINK); // 경계선 색 지정
 		jfchart.setBorderStroke(new BasicStroke(15)); // 경계선 두께(px) 지정
 		
-		ChartFrame cf2 = new ChartFrame("선 그래프", jfchart);
-		cf2.pack();
-		cf2.setSize(1000, 500);
+		ChartFrame cf2 = new ChartFrame("선 그래프", jfchart); // 창 title
+		cf2.pack(); // 자동 크기 조정
+		cf2.setSize(1000, 500); // 창 사이즈
 		cf2.setVisible(true);
 		
 	}
