@@ -65,9 +65,6 @@ public class IdPw extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// "눌러봐" 버튼을 클릭하면 이 IdPw 창이 닫히고 Main2창으로 넘어간다
-//				dispose(); // 개발자가 직접 메모리 해제 (frame 닫기)
-//				setVisible(false); // IdPw창 안보이게
-//				new Main2().setVisible(true); // Main2창의 *객체를 생성* 후 보이게
 				
 				// 단 입력한 id, pw 정보 가지고 가야 함
 				dispose(); // 개발자가 직접 메모리 해제 (frame 닫기)

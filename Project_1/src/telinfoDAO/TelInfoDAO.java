@@ -23,6 +23,7 @@ public class TelInfoDAO {
 
 	}
 
+	// case 1:
 	// kaga(값) 값을 받아서 처리
 	// insert_nametel() 비서
 	// getter, setter
@@ -34,7 +35,7 @@ public class TelInfoDAO {
 			pstmt.setInt(1, id);
 			pstmt.setString(2, name);
 			pstmt.setString(3, tel);
-//			"20200908" ==> 날짜Date 형으로
+			// 문자"20200908" ==> 날짜Date 형으로
 			pstmt.setString(4, sDate);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -42,9 +43,26 @@ public class TelInfoDAO {
 			return false;
 		}
 
-		return false;
+		return true;
+	}
+	
+	// case 2:
+	public boolean update_nametel(int id, String tel) {
+		String sql = "UPDATE teltable5 SET tel = ? WHERE id = ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, tel);
+			pstmt.setInt(2, id);
+			pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("Update Exception");
+			return false;
+		}
+
+		return true;
 	}
 
+	// case 3:
 	public boolean delete_nametel(int id) {
 		String sql = "DELETE FROM teltable5 WHERE id = ?";
 		try {
@@ -52,12 +70,13 @@ public class TelInfoDAO {
 			pstmt.setInt(1, id);
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("Delete Error");
+			System.out.println("Deletement Fail");
 			return false;
 		}
-		return false;
+		return true;
 	}
 
+	// case 4:
 	// getter 개념
 	public ArrayList<TelInfoVO> getAllInfo() throws SQLException {
 		ArrayList<TelInfoVO> tiArray = new ArrayList<>();
