@@ -24,14 +24,6 @@ public class SignupUserDAO {
 	
 	// user_acc테이블에 (id, pw, 연락처, 이름) 삽입Insert하는 함수
 	public boolean insert_useracc(String id, String pw, String pw_re, String name, String tel) {
-//		if(isExist(id)) {
-//			return false;
-//		}
-//		if(isPwIncorrect(pw, pw_re)) {
-//			return false;
-//		}
-//		String sql = "INSERT INTO user_acc VALUES(?,?,?,?)";
-//		if(pw_re.equals(pw)) {
 			try {
 				pstmt = con.prepareStatement("INSERT INTO user_acc VALUES(?,?,?,?)");
 				pstmt.setString(1, id);
@@ -46,11 +38,6 @@ public class SignupUserDAO {
 			}
 			return true;
 	}
-//		else {
-//			return false;
-//		}
-		
-	
 	
 	// 예외 처리
 	// 1) 유저id가 DB에 이미 존재하는 유저id인지 확인하는 함수
@@ -64,7 +51,6 @@ public class SignupUserDAO {
 		    if(rs.next()) {
 		    	return true;
 		    }
-		    
 		}catch (Exception e) {
 		    e.printStackTrace();
 		}
@@ -80,5 +66,9 @@ public class SignupUserDAO {
 		return false;
 	}
 	
-	// 3) any input 비워두었는지 확인하는 함수 < 추가예정..
+	// 3) id, pw, 이름, 연락처 입력값이 규정에 맞는지 확인하는 함수
+//	id : 
+//	pw : "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,20}$" // 영문,특문,숫자 8~20자
+//	public boolean isInputIncorrect(String id, String)
+	
 }

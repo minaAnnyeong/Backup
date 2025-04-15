@@ -1,0 +1,98 @@
+package kiosk_rsv;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JSpinner;
+import java.awt.Color;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+
+public class ReserveForm extends JFrame {
+
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ReserveForm frame = new ReserveForm();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public ReserveForm() {
+		setTitle("예약자 정보 확인창");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 480, 640);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("예약자 정보 확인");
+		lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 18));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setBounds(122, 66, 205, 65);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("예약자명 :");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("굴림", Font.PLAIN, 16));
+		lblNewLabel_1.setBounds(-34, 167, 205, 65);
+		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_2 = new JLabel("연락처 :");
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setFont(new Font("굴림", Font.PLAIN, 16));
+		lblNewLabel_2.setBounds(-34, 261, 205, 65);
+		contentPane.add(lblNewLabel_2);
+		
+		textField = new JTextField();
+		textField.setBounds(122, 179, 269, 44);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setColumns(10);
+		textField_1.setBounds(122, 264, 269, 44);
+		contentPane.add(textField_1);
+		
+		JLabel lblNewLabel_2_1 = new JLabel("인원수 :");
+		lblNewLabel_2_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2_1.setFont(new Font("굴림", Font.PLAIN, 16));
+		lblNewLabel_2_1.setBounds(-34, 358, 205, 65);
+		contentPane.add(lblNewLabel_2_1);
+		
+		JButton btnNewButton = new JButton("확인");
+		btnNewButton.setFont(new Font("굴림", Font.PLAIN, 20));
+		btnNewButton.setBounds(159, 482, 168, 65);
+		contentPane.add(btnNewButton);
+		
+		JSpinner spinner = new JSpinner();
+		spinner.setFont(new Font("굴림", Font.PLAIN, 18));
+		spinner.setBounds(122, 358, 56, 65);
+		contentPane.add(spinner);
+	}
+}

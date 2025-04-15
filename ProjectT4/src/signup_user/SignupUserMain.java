@@ -5,6 +5,8 @@ import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -39,7 +41,6 @@ public class SignupUserMain extends JFrame {
 	 */
 	// main 쪽에 회원가입 정보와 DB를 연결하는 DAO클래스 객체 생성 < ?
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		// DAO dao_signup = new DAO();
 //		SignupUserDAO sudao = new SignupUserDAO();
 
 		EventQueue.invokeLater(new Runnable() {
@@ -60,6 +61,7 @@ public class SignupUserMain extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+	// "회원 가입" 창 설계
 	public SignupUserMain() {
 		setTitle("회원가입");
 		setResizable(false);
@@ -157,13 +159,16 @@ public class SignupUserMain extends JFrame {
 				// JPasswordField의 반환값이 char[]이기 때문에 String으로 변환.
 				String pw_re_user = new String(PasswordField_pw_re.getPassword()); // "pw재입력" 상자에서 꺼내오기
 
+				// id, pw, 이름, 연락처 등 규정 검사 (((DAO에 작성 중...)))
+				
 				// *DB 의 user_acc 테이블에 INSERT 하는 함수* -> SignupUserDAO에서 작성한 함수로.
 				// return값 = sudao.함수명();
 				SignupUserDAO sudao;
 				try {
 					sudao = new SignupUserDAO();
-
-					if (sudao.isExist(id_user)) { // id 중복 확인
+								
+					if (sudao.isExist(id_user)) { // id 중복 확인  
+						// **user_id가 이미 테이블의 PK이기 때문에 id중복현상이 일어나면 자동으로 insertion error 뜨긴 한다.
 						textField_err.setVisible(true);
 						textField_err.setText("이미 존재하는 id입니다");
 					} else if (sudao.isPwIncorrect(pw_user, pw_re_user)) { // 비밀번호 불일치 확인
