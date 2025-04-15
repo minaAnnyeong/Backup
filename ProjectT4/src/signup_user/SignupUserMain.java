@@ -1,12 +1,11 @@
 package signup_user;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.SQLException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,7 +30,6 @@ public class SignupUserMain extends JFrame {
 	private JTextField textField_id;
 	private JPasswordField PasswordField_pw;
 	private JPasswordField PasswordField_pw_re;
-	private JTextField textField_err;
 
 	/**
 	 * Launch the application.
@@ -47,7 +45,7 @@ public class SignupUserMain extends JFrame {
 			public void run() {
 				try {
 					SignupUserMain frame_signupuser = new SignupUserMain();
-					frame_signupuser.setVisible(true); // 화면 보이게 하기
+					frame_signupuser.setVisible(true); // 창 보이게 하기
 //					frame_signupuser.setResizable(false); // 화면 크기 조정 가능 여부
 					frame_signupuser.setSize(WIDTH, HEIGHT); // 창 크기 설정
 					frame_signupuser.setLocationRelativeTo(null); // 화면의 가운데에 창 띄우기
@@ -75,20 +73,20 @@ public class SignupUserMain extends JFrame {
 
 		// "이름" 입력칸, 라벨
 		textField_name = new JTextField();
-		textField_name.setBounds(101, 101, 280, 35);
+		textField_name.setBounds(100, 100, 280, 35);
 		contentPane.add(textField_name);
 		textField_name.setColumns(10);
 
 		JLabel lbl_name = new JLabel("이름 :");
 		lbl_name.setLabelFor(textField_name);
 		lbl_name.setFont(new Font("굴림", Font.BOLD, 14));
-		lbl_name.setBounds(22, 106, 57, 25);
+		lbl_name.setBounds(31, 105, 57, 25);
 		contentPane.add(lbl_name);
 
 		// "연락처" 입력칸, 라벨
 		textField_tel = new JTextField();
 		textField_tel.setColumns(10);
-		textField_tel.setBounds(101, 172, 280, 35);
+		textField_tel.setBounds(100, 170, 280, 35);
 		contentPane.add(textField_tel);
 
 		JLabel lbl_tel = new JLabel("연락처 :");
@@ -100,49 +98,52 @@ public class SignupUserMain extends JFrame {
 		// "ID" 입력칸, 라벨
 		textField_id = new JTextField();
 		textField_id.setColumns(10);
-		textField_id.setBounds(101, 247, 280, 35);
+		textField_id.setBounds(100, 240, 280, 35);
 		contentPane.add(textField_id);
 
 		JLabel lbl_id = new JLabel("ID :");
 		lbl_id.setLabelFor(textField_id);
 		lbl_id.setFont(new Font("굴림", Font.BOLD, 14));
-		lbl_id.setBounds(22, 252, 57, 25);
+		lbl_id.setBounds(49, 245, 57, 25);
 		contentPane.add(lbl_id);
 
 		// "PW" 입력칸, 라벨
 		PasswordField_pw = new JPasswordField();
-		PasswordField_pw.setBounds(101, 323, 280, 35);
+		PasswordField_pw.setBounds(100, 310, 280, 35);
 		contentPane.add(PasswordField_pw);
 
 		JLabel lbl_password = new JLabel("PW :");
 		lbl_password.setLabelFor(PasswordField_pw);
 		lbl_password.setFont(new Font("굴림", Font.BOLD, 14));
-		lbl_password.setBounds(22, 328, 57, 25);
+		lbl_password.setBounds(49, 315, 57, 25);
 		contentPane.add(lbl_password);
 
 		// "PW재입력" 입력칸, 라벨
 		PasswordField_pw_re = new JPasswordField();
-		PasswordField_pw_re.setBounds(101, 398, 280, 35);
+		PasswordField_pw_re.setBounds(100, 380, 280, 35);
 		contentPane.add(PasswordField_pw_re);
 
 		JLabel lbl_password_re = new JLabel("PW 재입력 :");
 		lbl_password_re.setLabelFor(PasswordField_pw_re);
 		lbl_password_re.setFont(new Font("굴림", Font.BOLD, 14));
-		lbl_password_re.setBounds(12, 403, 94, 25);
+		lbl_password_re.setBounds(12, 385, 94, 25);
 		contentPane.add(lbl_password_re);
 
-		// "비밀번호 불일치" 메세지 띄우는 창
-		textField_err = new JTextField();
-		textField_err.setFont(new Font("굴림", Font.BOLD, 12));
-		textField_err.setBounds(126, 443, 232, 33);
-		contentPane.add(textField_err);
-		textField_err.setColumns(10);
-		textField_err.setVisible(false);
+		
+		
+		// 에러메세지 띄우는 라벨
+		JLabel lbl_errmsg = new JLabel("");
+		lbl_errmsg.setFont(new Font("굴림", Font.BOLD, 14));
+		lbl_errmsg.setForeground(new Color(128, 0, 0)); // 붉은색
+		lbl_errmsg.setBounds(110, 425, 232, 33);
+		lbl_errmsg.setHorizontalAlignment(JLabel.CENTER);
+		contentPane.add(lbl_errmsg);
+		lbl_errmsg.setVisible(false);
 
 		// "가입하기" 버튼
 		JButton btn_signup = new JButton("가입하기");
 		btn_signup.setFont(new Font("굴림", Font.BOLD, 14));
-		btn_signup.setBounds(162, 486, 140, 35);
+		btn_signup.setBounds(159, 486, 140, 35);
 		contentPane.add(btn_signup);
 
 		// "가입하기" 버튼 action
@@ -169,11 +170,11 @@ public class SignupUserMain extends JFrame {
 								
 					if (sudao.isExist(id_user)) { // id 중복 확인  
 						// **user_id가 이미 테이블의 PK이기 때문에 id중복현상이 일어나면 자동으로 insertion error 뜨긴 한다.
-						textField_err.setVisible(true);
-						textField_err.setText("이미 존재하는 id입니다");
+						lbl_errmsg.setVisible(true);
+						lbl_errmsg.setText("이미 존재하는 id입니다");
 					} else if (sudao.isPwIncorrect(pw_user, pw_re_user)) { // 비밀번호 불일치 확인
-						textField_err.setVisible(true);
-						textField_err.setText("비밀번호 불일치");
+						lbl_errmsg.setVisible(true);
+						lbl_errmsg.setText("비밀번호 불일치");
 					} else { // insert
 						if (sudao.insert_useracc(id_user, pw_user, pw_re_user, name_user, tel_user)) {
 							System.out.println("insert OK");
