@@ -6,6 +6,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="D:/study/eclipse/Backup/HelloJdbc/ojdbc11.jar"/>
+	<classpathentry kind="lib" path="D:/study/eclipse/Backup/ProjectT4/ojdbc11.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

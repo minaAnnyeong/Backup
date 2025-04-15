@@ -11,7 +11,7 @@ public class Delete2 {
 	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 		Connection con1 = null;
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-		con1 = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "hr", "1234");
+		con1 = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:xe", "hr", "hr");
 		System.out.println("접속 확인됨");
 		
 //		Q) 키보드로 퇴사한 사원아이디(id)를 입력받아 DB에서 삭제하시오. (단, 동명이인없다고 가정한다.)

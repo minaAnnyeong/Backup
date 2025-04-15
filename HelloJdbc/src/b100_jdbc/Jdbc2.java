@@ -25,7 +25,7 @@ public class Jdbc2 {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		// 맨 뒤의 두 파라미터는 sqldeveloper할 때 접속 id와 비번.
 		con1 = DriverManager.getConnection
-				("jdbc:oracle:thin:@127.0.0.1:1521:xe","hr","1234");
+				("jdbc:oracle:thin:@127.0.0.1:1521:xe","hr","hr");
 		System.out.println("접속 확인됨");
 		
 //		Q) employees 테이블에서 사원의 전체 명단을 검색하여 java로 출력하시오.

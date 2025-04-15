@@ -16,7 +16,7 @@ public class TelInfoMain {
 		TelInfoDAO tidao = new TelInfoDAO();
 		do {
 			System.out.println("비상연락망관리!!");
-			System.out.println("------------------------");
+			System.out.println("-----------------X-------");
 			System.out.println("1: 한명입력"); // C
 			System.out.println("2: 수정"); 	// U
 			System.out.println("3: 삭제"); 	// D
