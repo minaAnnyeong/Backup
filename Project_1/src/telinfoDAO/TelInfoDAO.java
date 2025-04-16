@@ -85,7 +85,6 @@ public class TelInfoDAO {
 		rs = pstmt.executeQuery(); // (1) 종이박스에 전체사원넣고
 
 		while (rs.next()) { // (2) 종이박스에 한명씩 꺼내
-
 			// id: 자바의 변수명 // id: db의 컬럼명
 			int id = rs.getInt("id");
 			String name = rs.getString("name");

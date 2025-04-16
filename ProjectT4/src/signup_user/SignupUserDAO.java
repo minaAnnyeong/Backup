@@ -32,22 +32,22 @@ public class SignupUserDAO {
 	}
 
 	// 0) user_acc테이블에 (id, pw, 연락처, 이름) 삽입Insert하는 함수
-	public boolean insert_useracc(String id, String pw, String pw_re, String name, String tel) {
+	public void insert_useracc(SignupUserVO signup_info) {
 		try {
 			pstmt = con.prepareStatement("INSERT INTO user_acc VALUES(?,?,?,?)");
-			pstmt.setString(1, id);
-			pstmt.setString(2, pw);
-			pstmt.setString(3, name);
+			pstmt.setString(1, signup_info.getId());
+			pstmt.setString(2, signup_info.getPw());
+			pstmt.setString(3, signup_info.getName());
 			// 형식변환하여 저장 tel = "01012345678" -> teldb = "010-1234-5678"
 //				pstmt.setString(4, tel);
-			pstmt.setString(4, telTransform(tel));
+			pstmt.setString(4, telTransform(signup_info.getTel()));
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("Insertion Error");
-			return false;
+//			return false;
 		}
-		return true;
+//		return true;
 	}
 
 	// 예외 처리

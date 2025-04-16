@@ -1,4 +1,4 @@
-package kiosk_rsv;
+package a415;
 
 import java.awt.EventQueue;
 

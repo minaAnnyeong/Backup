@@ -1,19 +1,23 @@
-package kiosk_rsv;
+package a415;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JSpinner;
-import java.awt.Color;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
+import javax.swing.SpinnerNumberModel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
+import java.sql.Timestamp;
+
 
 public class ReserveForm extends JFrame {
 
@@ -21,6 +25,8 @@ public class ReserveForm extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JSpinner spinner;
+
 
 	/**
 	 * Launch the application.
@@ -86,13 +92,36 @@ public class ReserveForm extends JFrame {
 		contentPane.add(lblNewLabel_2_1);
 		
 		JButton btnNewButton = new JButton("확인");
+//		btnNewButton.addActionListener(new ActionListener() {
+//		    public void actionPerformed(ActionEvent e) {
+//		        String name = textField.getText();
+//		        String contact = textField_1.getText();
+//		        int people = (int) spinner.getValue();
+//		        // 예약 정보 처리 로직 추가
+//		        JOptionPane.showMessageDialog(null, "예약 정보 확인 완료!");
+//		    }
+//		});
+		
 		btnNewButton.setFont(new Font("굴림", Font.PLAIN, 20));
 		btnNewButton.setBounds(159, 482, 168, 65);
 		contentPane.add(btnNewButton);
 		
-		JSpinner spinner = new JSpinner();
+		spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(1, 1, 30, 1)); // 최소 1명, 최대 20명
 		spinner.setFont(new Font("굴림", Font.PLAIN, 18));
 		spinner.setBounds(122, 358, 56, 65);
 		contentPane.add(spinner);
+		
+		btnNewButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int userCount = (int) spinner.getValue();
+                String userId = "ondal";
+                int restId = 1;
+                Timestamp revTime = new Timestamp(System.currentTimeMillis());
+
+                DatabaseHelper.insertUserReservation(userId, restId, userCount, revTime);
+                JOptionPane.showMessageDialog(null, "예약 완료되었습니다!");
+            }
+        });
 	}
 }
