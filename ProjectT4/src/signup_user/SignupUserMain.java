@@ -128,17 +128,17 @@ public class SignupUserMain extends JFrame {
 		lbl_password_re.setFont(new Font("굴림", Font.BOLD, 14));
 		lbl_password_re.setBounds(12, 385, 94, 25);
 		contentPane.add(lbl_password_re);
-
-		
 		
 		// 에러메세지 띄우는 라벨
+		//**  >> 라벨말고 JOption창으로 띄우는 게 어떤지?
 		JLabel lbl_errmsg = new JLabel("");
 		lbl_errmsg.setFont(new Font("굴림", Font.BOLD, 14));
 		lbl_errmsg.setForeground(new Color(128, 0, 0)); // 붉은색
-		lbl_errmsg.setBounds(110, 425, 232, 33);
+		lbl_errmsg.setBounds(110, 425, 232, 51);
 		lbl_errmsg.setHorizontalAlignment(JLabel.CENTER);
 		contentPane.add(lbl_errmsg);
 		lbl_errmsg.setVisible(false);
+		//
 
 		// "가입하기" 버튼
 		JButton btn_signup = new JButton("가입하기");
@@ -167,14 +167,29 @@ public class SignupUserMain extends JFrame {
 				SignupUserDAO sudao;
 				try {
 					sudao = new SignupUserDAO();
-								
+					
+					/* 예외 상황 처리 우선순서 : 
+					 * id중복 > 이름규정 > 연락처규정 > id규정 > pw규정 > pw불일치
+					 * */
 					if (sudao.isExist(id_user)) { // id 중복 확인  
 						// **user_id가 이미 테이블의 PK이기 때문에 id중복현상이 일어나면 자동으로 insertion error 뜨긴 한다.
 						lbl_errmsg.setVisible(true);
-						lbl_errmsg.setText("이미 존재하는 id입니다");
+						lbl_errmsg.setText("<html>이미 존재하는 id입니다</html>");
+					} else if(!sudao.isNameMatch(name_user)) { // 이름 규정 확인
+						lbl_errmsg.setVisible(true);
+						lbl_errmsg.setText("<html>이름은 한글 또는 영문<br>조합으로 입력해주세요</html>");
+					} else if(!sudao.isTelMatch(tel_user)) { // 연락처 규정 확인
+						lbl_errmsg.setVisible(true);
+						lbl_errmsg.setText("<html>연락처를 알맞게 입력해주세요</html>");
+					} else if(!sudao.isIdMatch(id_user)){ // id 규정 확인
+						lbl_errmsg.setVisible(true);
+						lbl_errmsg.setText("<html>아이디는 영문포함<br>4~15자로 입력해주세요</html>");
+					} else if(!sudao.isPwMatch(pw_user)) { // pw 규정 확인
+						lbl_errmsg.setVisible(true);
+						lbl_errmsg.setText("<html>비밀번호는 영문+숫자+특문 조합<br>8~20자로 입력해주세요</html>");
 					} else if (sudao.isPwIncorrect(pw_user, pw_re_user)) { // 비밀번호 불일치 확인
 						lbl_errmsg.setVisible(true);
-						lbl_errmsg.setText("비밀번호 불일치");
+						lbl_errmsg.setText("<html>비밀번호 불일치</html>");
 					} else { // insert
 						if (sudao.insert_useracc(id_user, pw_user, pw_re_user, name_user, tel_user)) {
 							System.out.println("insert OK");
