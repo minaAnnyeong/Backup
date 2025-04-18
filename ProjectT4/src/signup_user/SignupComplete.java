@@ -83,7 +83,7 @@ public class SignupComplete extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				// "확인" 버튼 누르면 최종적으로 회원가입 정보를 DB에 insert
-				signup_dao.insert_useracc(signup_info);
+				signup_dao.insertUseracc(signup_info);
 				// 창 닫기
 				dispose(); // 개발자가 직접 메모리 해제 (frame 닫기)
 				setVisible(false); // "회원가입완료"창 닫기

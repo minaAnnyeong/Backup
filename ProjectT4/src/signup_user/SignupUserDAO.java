@@ -11,20 +11,18 @@ import java.util.regex.Pattern;
 //import SignupUserVO;
 
 public class SignupUserDAO {
-	// DAO -DB와 만나는 java파일
-
-	// DB와 연결 준비
-	private Connection con; // new ..DAO로 객체 생성시마다 접속객체 가져옴
+	private Connection con; 
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
-	// 이름 패턴 : 영문 또는 한글로만 [길이제한없음]
+	
+	// 이름 패턴 : 영문으로만 또는 한글로만 [길이제한없음]
 	Pattern pattern_nameEn = Pattern.compile("^[a-zA-Z]*$"); // 패턴: 영문으로만
 	Pattern pattern_nameKo = Pattern.compile("^[ㄱ-ㅎ가-힣]*$"); // 패턴: 한글로만
 	// 연락처 패턴 : 숫자만 [10~]자
 	Pattern pattern_tel = Pattern.compile("^(\\d{2,3})(\\d{3,4})(\\d{4})$");
-	// id 패턴 : 영문 [4~15]자
+	// id 패턴 : 영문 필수 [4~15]자
 	Pattern pattern_id = Pattern.compile("^(?=.*[a-zA-Z]).{4,15}$");
-	// pw 패턴 : 영문+숫자+특문 [8~20]자
+	// pw 패턴 : 영문+숫자+특문 필수 [8~20]자
 	Pattern pattern_pw = Pattern.compile("^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,20}$");
 
 	public SignupUserDAO() throws ClassNotFoundException, SQLException { // DAO 생성자
@@ -32,22 +30,19 @@ public class SignupUserDAO {
 	}
 
 	// 0) user_acc테이블에 (id, pw, 연락처, 이름) 삽입Insert하는 함수
-	public void insert_useracc(SignupUserVO signup_info) {
+	public void insertUseracc(SignupUserVO signup_info) {
 		try {
 			pstmt = con.prepareStatement("INSERT INTO user_acc VALUES(?,?,?,?)");
 			pstmt.setString(1, signup_info.getId());
 			pstmt.setString(2, signup_info.getPw());
 			pstmt.setString(3, signup_info.getName());
-			// 형식변환하여 저장 tel = "01012345678" -> teldb = "010-1234-5678"
-//				pstmt.setString(4, tel);
+			// 형식변환하여 저장  예) "01012345678" ->  "010-1234-5678"
 			pstmt.setString(4, telTransform(signup_info.getTel()));
 
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("Insertion Error");
-//			return false;
+			System.out.println("user_acc 테이블 삽입 에러: " + e.getMessage());
 		}
-//		return true;
 	}
 
 	// 예외 처리
@@ -77,7 +72,6 @@ public class SignupUserDAO {
 	}
 
 	// 3) id, pw, 이름, 연락처 입력값이 규정에 맞는지 확인하는 함수
-//	구체적으로: 예: 규정과 다르면 id의경우, "id는 영문, 숫자조합 n자이상" / pw의 경우, "pw는 어쩌구"
 //	3-1) 이름 입력값이 이름 규정에 주합하는지 확인하는 함수
 	public boolean isNameMatch(String name) {
 		if (pattern_nameEn.matcher(name).matches() || pattern_nameKo.matcher(name).matches()) {

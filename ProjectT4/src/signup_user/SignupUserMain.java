@@ -1,6 +1,5 @@
 package signup_user;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -16,9 +15,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-// 같은 패키지라서 import불필요 ? 
-//import SignupUserVO;
-//import SignupUserDAO;
 
 public class SignupUserMain extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -31,6 +27,11 @@ public class SignupUserMain extends JFrame {
 	private JTextField textField_id;
 	private JPasswordField PasswordField_pw;
 	private JPasswordField PasswordField_pw_re;
+	
+	// SignupUserVO 객체 선언
+	SignupUserVO signup_info; 
+	// SignupUserDAO 객체 선언
+	SignupUserDAO signup_dao;
 
 	/**
 	 * Launch the application.
@@ -65,7 +66,7 @@ public class SignupUserMain extends JFrame {
 		setTitle("회원가입");
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 480, 640);
+		setBounds(100, 100, WIDTH, HEIGHT);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -137,17 +138,6 @@ public class SignupUserMain extends JFrame {
 		lbl_password_re.setBounds(12, 385, 94, 25);
 		contentPane.add(lbl_password_re);
 
-		// 에러메세지 띄우는 라벨
-		// ** 라벨 -> 팝업창JOption 으로 변경
-//		JLabel lbl_errmsg = new JLabel("");
-//		lbl_errmsg.setFont(new Font("굴림", Font.BOLD, 14));
-//		lbl_errmsg.setForeground(new Color(128, 0, 0)); // 붉은색
-//		lbl_errmsg.setBounds(110, 425, 232, 51);
-//		lbl_errmsg.setHorizontalAlignment(JLabel.CENTER); // 글자 가운데 정렬
-//		contentPane.add(lbl_errmsg);
-//		lbl_errmsg.setVisible(false);
-		//
-
 		// "가입하기" 버튼
 		JButton btn_signup = new JButton("가입하기");
 		btn_signup.setFont(new Font("굴림", Font.BOLD, 14));
@@ -167,10 +157,7 @@ public class SignupUserMain extends JFrame {
 				// * JPasswordField의 반환값이 char[]이기 때문에 String으로 변환.
 				String pw_re_user = new String(PasswordField_pw_re.getPassword()); // "pw재입력" 상자에서 꺼내오기
 
-				// SignupUserVO 객체 생성
-				SignupUserVO signup_info = new SignupUserVO(name_user, tel_user, id_user, pw_user);
-				// SignupUserDAO 
-				SignupUserDAO signup_dao;
+				signup_info = new SignupUserVO(name_user, tel_user, id_user, pw_user);
 
 				try {
 					signup_dao = new SignupUserDAO();

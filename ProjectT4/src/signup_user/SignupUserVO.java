@@ -1,7 +1,6 @@
 package signup_user;
 
 public class SignupUserVO {
-	// 일반 손님 회원가입 속성 : 이름, 연락처, id, pw
 	private String name;
 	private String tel;
 	private String id;
